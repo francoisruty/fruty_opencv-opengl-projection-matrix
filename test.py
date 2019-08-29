@@ -6,10 +6,10 @@ cx = 88 #principal point x coord
 cy = 109 #principal point y coord
 w = 178 #image width
 h = 218 #image height
-near = 1 #near plane
-far = 10 #far plane
+near = 10 #near plane
+far = 20 #far plane
 fovy = 45.0/360.0*2.0*np.pi #45° in radians
-f = h / 2*math.tan(fovy/2) #cf http://paulbourke.net/miscellaneous/lens/
+f = h / 2*math.tan(fovy/2) #cf http://paulbourke.net/miscellaneous/lens/  (NOTE: focal length is in pixels)
 
 #we compute the OpenCV camera matrix
 camera_mtx = np.array([
@@ -31,7 +31,7 @@ opengl_mtx = np.array([
 
 
 #point is in opencv camera space (along Oz axis)
-point = np.array([1.0, 2.0, 8.0]) #Note: coords must be floats
+point = np.array([1.0, 2.0, 15.0]) #Note: coords must be floats
 
 
 #### OpenCV projection
@@ -61,3 +61,7 @@ print(viewport_point)
 #Now you can see that viewport_point and screen_point have the same x/y coordinates!
 #This means you can now, from OpenCv camera matrix, use OpenGl to render stuff on top of the image,
 #thanks to the opengl projection matrix, computed from opencv camera matrix
+
+
+#NOTE: when near plane is small (a few units) and when focal length is small (ex: 10-12),
+#both results tend to diverge. I'm not sure why the formula starts falling apart at extreme values.
