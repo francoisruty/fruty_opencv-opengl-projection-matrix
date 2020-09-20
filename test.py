@@ -24,7 +24,7 @@ camera_mtx = np.array([
 #NOTE: K00 = K11 = f, K10 = 0.0, K02 = cx, K12 = cy, K22 = 1.0
 opengl_mtx = np.array([
 [2*f/w, 0.0, (w - 2*cx)/w, 0.0],
-[0.0, -2*f/h, (h - 2*cy)/h, 0.0],
+[0.0, -2*f/h, -(h - 2*cy)/h, 0.0],
 [0.0, 0.0, (-far - near) / (far - near), -2.0*far*near/(far-near)],
 [0.0, 0.0, -1.0, 0.0]
 ])
