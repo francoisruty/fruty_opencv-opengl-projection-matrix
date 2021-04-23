@@ -9,7 +9,7 @@ h = 218 #image height
 near = 10 #near plane
 far = 20 #far plane
 fovy = 45.0/360.0*2.0*np.pi #45° in radians
-f = h / 2*math.tan(fovy/2) #cf http://paulbourke.net/miscellaneous/lens/  (NOTE: focal length is in pixels)
+f = 0.5 * h / math.tan(fovy/2) #cf http://paulbourke.net/miscellaneous/lens/  (NOTE: focal length is in pixels)
 
 #we compute the OpenCV camera matrix
 camera_mtx = np.array([
